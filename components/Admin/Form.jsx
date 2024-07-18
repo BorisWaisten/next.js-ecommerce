@@ -1,85 +1,26 @@
-'use client';
 
-import { useState } from 'react';
-
-const AddProductForm = () => {
-    const [product, setProduct] = useState({
-        name: '',
-        price: 0,
-        category: '',
-        description: '',
-        image: '',
-        stock: 0,
-    });
-
-    const [imagePreview, setImagePreview] = useState(null);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setProduct({
-            ...product,
-            [name]: value,
-        });
-    };
-
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        setProduct({
-            ...product,
-            image: file,
-        });
-
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setImagePreview(reader.result);
-        };
-        reader.readAsDataURL(file);
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append('name', product.name);
-        formData.append('price', product.price);
-        formData.append('category', product.category);
-        formData.append('image', product.image);
-
-        const response = await fetch('/api/products', {
-            method: 'POST',
-            body: formData,
-        });
-
-        if (response.ok) {
-            alert('Product added successfully');
-            setProduct({
-                name: '',
-                price: 0,
-                category: '',
-                description: '',
-                image: '',
-                stock: 0,
-            });
-            setImagePreview(null);
-        } else {
-            alert('Failed to add product');
-        }
-    };
-
+const AddProductForm = ({ handleSubmitApi, product, handleChange, handleImageChange, imagePreview }) => {
     return (
         <div className="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 mt-20">
             <h1 className="text-xl font-bold text-white capitalize dark:text-white">Add Product</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmitApi}>
                 <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div>
-                        <input
+                        <select
                             id="name"
                             name="name"
-                            type="text"
                             value={product.name}
-                            placeholder='Add Name'
                             onChange={handleChange}
                             className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                        />
+                        >
+                            <option value="">Select Name</option>
+                            <option value="T-shirt">T-shirt</option>
+                            <option value="shirt">shirt</option>
+                            <option value="jacket">jacket</option>
+                            <option value="pants">pants</option>
+                            <option value="shorts">shorts</option>
+                            <option value="sweatshirt">sweatshirt</option>
+                        </select>
                     </div>
                     <div>
                         <input
@@ -98,12 +39,11 @@ const AddProductForm = () => {
                             name="category"
                             value={product.category}
                             onChange={handleChange}
-
                             className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                         >
-                            <option selected="">Select Category</option>
-                            <option value="Category 1">Man</option>
-                            <option value="Category 2">Woman</option>
+                            <option value="">Select Category</option>
+                            <option value="Man">Man</option>
+                            <option value="Woman">Woman</option>
                         </select>
                     </div>
                     <div>
@@ -112,7 +52,6 @@ const AddProductForm = () => {
                                 type="file"
                                 id="image"
                                 name="image"
-                        
                                 onChange={handleImageChange}
                                 className="absolute inset-0 w-full h-full opacity-0 z-50"
                             />
@@ -143,15 +82,15 @@ const AddProductForm = () => {
                         />
                     </div>
                     <div>
-                    <label className="text-white dark:text-gray-200" htmlFor="stock">Add Stock</label>
-                            <input
-                                id="stock"
-                                name="stock"
-                                type="number"
-                                value={product.stock}
-                                onChange={handleChange}
-                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                            />
+                        <input
+                            id="stock"
+                            name="stock"
+                            type="number"
+                            value={product.stock}
+                            placeholder="Add Stock"
+                            onChange={handleChange}
+                            className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                        />
                     </div>
                 </div>
                 <div className="flex justify-end mt-6">

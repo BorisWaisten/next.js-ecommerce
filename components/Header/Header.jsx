@@ -13,7 +13,6 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
 const initialNavigation = [
-  { name: 'All Products', href: '/products', current: true },
   { name: 'Man', href: '/products/man', current: false },
   { name: 'Woman', href: '/products/woman', current: false },
 ];
