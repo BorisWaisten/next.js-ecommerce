@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 const AddProductForm = ({ handleSubmitApi, product, handleChange, handleImageChange, imagePreview }) => {
     return (
@@ -42,8 +43,8 @@ const AddProductForm = ({ handleSubmitApi, product, handleChange, handleImageCha
                             className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                         >
                             <option value="">Select Category</option>
-                            <option value="Man">Man</option>
-                            <option value="Woman">Woman</option>
+                            <option value="man">Man</option>
+                            <option value="woman">Woman</option>
                         </select>
                     </div>
                     <div>
@@ -56,7 +57,7 @@ const AddProductForm = ({ handleSubmitApi, product, handleChange, handleImageCha
                                 className="absolute inset-0 w-full h-full opacity-0 z-50"
                             />
                             <div className="text-center">
-                                <img className="mx-auto h-12 w-12" src="https://www.svgrepo.com/show/357902/image-upload.svg" alt="Upload Icon" />
+                                <Image className="mx-auto h-12 w-12" src="https://www.svgrepo.com/show/357902/image-upload.svg" alt="Upload Icon" />
                                 <h3 className="mt-2 text-sm font-medium text-gray-900">
                                     <label htmlFor="image" className="relative cursor-pointer">
                                         <span>Drag and drop</span>
@@ -67,7 +68,7 @@ const AddProductForm = ({ handleSubmitApi, product, handleChange, handleImageCha
                                 <p className="mt-1 text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                             </div>
                             {imagePreview && (
-                                <img src={imagePreview} className="mt-4 mx-auto max-h-40" alt="Preview" />
+                                <Image src={imagePreview} className="mt-4 mx-auto max-h-40" alt="Preview" />
                             )}
                         </div>
                     </div>

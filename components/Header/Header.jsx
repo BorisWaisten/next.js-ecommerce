@@ -1,13 +1,10 @@
 'use client';
-import image from '@/public/BorisWaistenImage.jpg';
 import {
-  Disclosure, DisclosureButton, MenuButton, Menu,
-  MenuItems, MenuItem, Transition, DisclosurePanel
+  Disclosure, DisclosureButton, Menu, MenuItems, MenuItem, Transition, DisclosurePanel
 } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Search from './Search';
 import Link from 'next/link';
-import Image from 'next/image';
 import SignInBtn from './SignInBtn';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
@@ -40,12 +37,8 @@ export default function Header() {
     }
   }, [session]);
 
-  if (!session) {
-    return <SignInBtn />;
-  }
-
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="shadow-lg">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -89,7 +82,7 @@ export default function Header() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <Menu as="div" className="relative ml-3">
                   <div>
-                      <SignInBtn />
+                    <SignInBtn />
                   </div>
                 </Menu>
               </div>

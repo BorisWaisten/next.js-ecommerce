@@ -14,7 +14,7 @@ const ProductCard = ({ product }) => {
       />
       <p>{product.description}</p>
       <p className="text-green-500">${product.price}</p>
-      <Link href={`/products/${product.category}/${product.id}`} className="text-blue-500">
+      <Link href={`/products/${product.category}/${product._id}`} className="text-blue-500">
           View Product
       </Link>
     </div>
