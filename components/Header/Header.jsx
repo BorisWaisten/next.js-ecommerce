@@ -5,7 +5,7 @@ import {
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Search from './Search';
 import Link from 'next/link';
-import SignInBtn from './SignInBtn';
+import SignInBtn from '../SignIn/SignInBtn';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 

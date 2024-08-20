@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import SignInBtn from "./SignInBtn";
+import SignInBtn from "../SignIn/SignInBtn";
 
 export default function NavBar() {
     const router = useRouter();
