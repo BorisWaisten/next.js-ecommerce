@@ -26,7 +26,6 @@ export default function ProductPage({ category, id }) {
                 console.error('Failed to fetch product:', error);
             }
         }
-
         getProduct();
     }, [category, id]);
 

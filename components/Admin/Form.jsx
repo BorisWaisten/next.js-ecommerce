@@ -57,7 +57,12 @@ const AddProductForm = ({ handleSubmitApi, product, handleChange, handleImageCha
                                 className="absolute inset-0 w-full h-full opacity-0 z-50"
                             />
                             <div className="text-center">
-                                <Image className="mx-auto h-12 w-12" src="https://www.svgrepo.com/show/357902/image-upload.svg" alt="Upload Icon" />
+                                <Image 
+                                className="mx-auto h-12 w-12" 
+                                src="https://www.svgrepo.com/show/357902/image-upload.svg" 
+                                alt="Upload Icon" 
+                                width={50} height={50}
+                                />
                                 <h3 className="mt-2 text-sm font-medium text-gray-900">
                                     <label htmlFor="image" className="relative cursor-pointer">
                                         <span>Drag and drop</span>

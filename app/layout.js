@@ -5,7 +5,6 @@ import Footer from "@/components/Footer/Footer";
 import { inter, poppins } from "./font";
 import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 
-
 export const metadata = {
   title: "App Ecommerce",
   icons: {
@@ -14,6 +13,9 @@ export const metadata = {
 };
 
 export default function Layout({ children }) {
+  
+
+  
   return (
     <html lang="en">
       <body className= {`antialiased  flex flex-col min-h-screen ${inter.className}`} >

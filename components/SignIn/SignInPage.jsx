@@ -4,6 +4,7 @@ import { signIn } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
 export default function SignInPage() {
     const { data: session } = useSession();
@@ -18,6 +19,7 @@ export default function SignInPage() {
     }, [session, router, callbackUrl]);
 
     return (
+        <Suspense fallback={<div>Loading...</div>}>
         <div className="flex items-center justify-center min-h-screen">
             <div className="bg-white shadow-md rounded-lg p-8 w-80">
                 <h1 className="text-2xl font-bold mb-4 text-gray-900 text-center">Sign In</h1>
@@ -36,5 +38,6 @@ export default function SignInPage() {
                 </p>
             </div>
         </div>
+        </Suspense>
     );
 }
